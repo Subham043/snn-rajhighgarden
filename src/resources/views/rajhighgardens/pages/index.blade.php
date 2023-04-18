@@ -146,7 +146,7 @@
                         <h6>Kids Play Area</h6>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 amenities-col">
-                        <img src="https://rajhighgardens.com/wp-content/uploads/2022/09/coffee.png" alt="">
+                        <img src="{{ asset('assets/rajhighgardens/images/amenities/barbeque.png')}}" alt="">
                         <h6>BARBEQUE / BAR</h6>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 amenities-col">
