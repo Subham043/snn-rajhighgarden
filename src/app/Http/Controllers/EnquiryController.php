@@ -26,7 +26,7 @@ class EnquiryController extends Controller
         }
         try {
             //code...
-            $data = Enquiry::create($request->validated());
+            $data = Enquiry::create($request->validate());
             return response()->json(['message'=>'Enquiry created successfully.'], 201);
         } catch (\Throwable $th) {
             // throw $th;
