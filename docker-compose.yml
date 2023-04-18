@@ -1,0 +1,61 @@
+version: '3'
+
+networks:
+  laravel:
+
+services:
+  nginx: 
+    image: nginx:stable-alpine
+    container_name: snn_nginx
+    ports:
+      - "8081:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - laravel
+
+  mysql:
+    image: mariadb:10.5.8
+    container_name: snn_mysql
+    restart: unless-stopped
+    # command: --default-authentication-plugin=mysql_native_password
+    tty: true
+    ports:
+      - "4306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    env_file:
+      - .env
+
+    networks:
+      - laravel
+
+  phpmyadmin:
+    container_name: snn_admin
+    depends_on:
+      - mysql
+    # image: phpmyadmin/phpmyadmin
+    image: arm64v8/phpmyadmin
+    restart: always
+    ports:
+      - '8082:80'
+    env_file:
+      - .env
+    networks:
+      laravel:
+
+  php:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: snn_php
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "9000:9000"
+    networks:
+      - laravel

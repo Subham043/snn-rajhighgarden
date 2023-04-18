@@ -1,0 +1,1956 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Awahan API Documentation",
+        "description": "Swagger OpenApi description",
+        "contact": {
+            "email": "subham.5ine@gmail.com"
+        },
+        "license": {
+            "name": "Nginx 1.22.1",
+            "url": "http://nginx.org/LICENSE"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Awahan API Server"
+        }
+    ],
+    "paths": {
+        "/api/auth/admin-login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Authenticate Admin",
+                "description": "Returns authenticated admin data",
+                "operationId": "4be0cbf1b67efbee14721940110ed3e1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string",
+                                        "example": "subham.5ine@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "User Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/auth/forgot-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Forgot Password of User",
+                "description": "Returns registered user data",
+                "operationId": "8a1962a52537c1d2b5769326e79d3228",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string",
+                                        "example": "subham.5ine@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Authenticate User",
+                "description": "Returns authenticated user data",
+                "operationId": "f779238bce5c5b984c773808f46fd14c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string",
+                                        "example": "subham.5ine@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "User Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout Authenticated User",
+                "description": "Returns registered user data",
+                "operationId": "a53594eeb3e9697671f1c9923cf5e39c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/password-update": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Update Password of Authenticated User",
+                "description": "Returns registered user data",
+                "operationId": "d6a65b785461484123f9a92182a98137",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "old_password": {
+                                        "description": "User Old Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    },
+                                    "password": {
+                                        "description": "User New Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    },
+                                    "confirm_password": {
+                                        "description": "User Confirm Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/profile": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Profile Data of Authenticated User",
+                "description": "Returns registered user data",
+                "operationId": "f207dc1ea21442c0d3b584c92bae0e8c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/profile-update": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Update Profile of Authenticated User",
+                "description": "Returns registered user data",
+                "operationId": "aa5c9f497a3630931133af2e06dd7a70",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "description": "User First Name",
+                                        "type": "string",
+                                        "example": "subham"
+                                    },
+                                    "last_name": {
+                                        "description": "User Last Name",
+                                        "type": "string",
+                                        "example": "saha"
+                                    },
+                                    "phone": {
+                                        "description": "User Phone",
+                                        "type": "string",
+                                        "example": "7892156160"
+                                    },
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string",
+                                        "example": "subham.5ine@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/refresh": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresh Token of Authenticated User",
+                "description": "Returns registered user data",
+                "operationId": "62c926773eae265ad5f5e91d498e995b",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register User",
+                "description": "Returns registered user data",
+                "operationId": "f0e180cf2ce34bf385b5cf9d3169900d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "description": "User First Name",
+                                        "type": "string",
+                                        "example": "subham"
+                                    },
+                                    "last_name": {
+                                        "description": "User Last Name",
+                                        "type": "string",
+                                        "example": "saha"
+                                    },
+                                    "phone": {
+                                        "description": "User Phone",
+                                        "type": "string",
+                                        "example": "7892156160"
+                                    },
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string",
+                                        "example": "subham.5ine@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "User Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/auth/resent-otp/{id}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Re-send Otp",
+                "description": "Returns registered user data",
+                "operationId": "826051a29755f2d42ef56f1acddf0b99",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/auth/reset-password/{id}": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Update Password of Unauthenticated User",
+                "description": "Returns registered user data",
+                "operationId": "79155451cba96ca62dcacff03b6d03b0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "otp": {
+                                        "description": "User OTP",
+                                        "type": "string",
+                                        "example": "1234"
+                                    },
+                                    "old_password": {
+                                        "description": "User Old Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    },
+                                    "password": {
+                                        "description": "User New Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    },
+                                    "confirm_password": {
+                                        "description": "User Confirm Password",
+                                        "type": "string",
+                                        "example": "subham"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/auth/verify-user/{id}": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Verify User",
+                "description": "Returns registered user data",
+                "operationId": "c00cca604facbf62771665f9506c970c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "otp": {
+                                        "description": "User OTP",
+                                        "type": "string",
+                                        "example": "1234"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/banner/create": {
+            "post": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "Create Banner",
+                "description": "Returns created banner data",
+                "operationId": "af4cdedcf8384bfc43f384ef2299b64c",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "Banner Image",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "alt": {
+                                        "description": "Banner Alt",
+                                        "type": "string",
+                                        "example": "image alt text"
+                                    },
+                                    "title": {
+                                        "description": "Banner Title",
+                                        "type": "string",
+                                        "example": "image title text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/banner/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "Delete Banner",
+                "description": "Returns banner data",
+                "operationId": "600435e249acfafea928f016963e47ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Banner id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/banner/display/{id}": {
+            "get": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "Display Banner",
+                "description": "Returns banner data",
+                "operationId": "b5b4c2435c5665d32a8688c8fcfa9c9f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Banner id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/banner/paginate": {
+            "get": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "Paginate Banner",
+                "description": "Returns banner collection data",
+                "operationId": "74cab402f51ab94932d2e994b9d56bf1",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/banner/random": {
+            "get": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "Display Random Banner",
+                "description": "Returns banner data",
+                "operationId": "2848d8aacc8bcc880df969d62241fd56",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/banner/update/{id}": {
+            "post": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "Update Banner",
+                "description": "Returns updated banner data",
+                "operationId": "bf6decaeaf7d5bef994dd55fdf62ec76",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Banner id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "imsge": {
+                                        "description": "Banner Image",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "alt": {
+                                        "description": "Banner Alt",
+                                        "type": "string",
+                                        "example": "image alt text"
+                                    },
+                                    "title": {
+                                        "description": "Banner Title",
+                                        "type": "string",
+                                        "example": "image title text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/counter/create": {
+            "post": {
+                "tags": [
+                    "Counter"
+                ],
+                "summary": "Create Counter",
+                "description": "Returns created counter data",
+                "operationId": "07c3cea8fc961b4bb34055456727b2c4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "counter": {
+                                        "description": "Counter",
+                                        "type": "string",
+                                        "example": "2234"
+                                    },
+                                    "title": {
+                                        "description": "Title",
+                                        "type": "string",
+                                        "example": "title text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/counter/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Counter"
+                ],
+                "summary": "Delete Counter",
+                "description": "Returns counter data",
+                "operationId": "8d5a96b668fa7da4ad001c66b327a595",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Counter id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/counter/display/{id}": {
+            "get": {
+                "tags": [
+                    "Counter"
+                ],
+                "summary": "Display Counter",
+                "description": "Returns counter data",
+                "operationId": "44cd7e58ddaf8918b4852782bd41f1f5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Counter id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/counter/paginate": {
+            "get": {
+                "tags": [
+                    "Counter"
+                ],
+                "summary": "Paginate Counter",
+                "description": "Returns counter collection data",
+                "operationId": "f2944534bdce6f262bfe95aad73d7a9b",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/counter/random": {
+            "get": {
+                "tags": [
+                    "Counter"
+                ],
+                "summary": "Display Random Counter",
+                "description": "Returns counter data",
+                "operationId": "0152f5ec5c499992ed8adb1489020286",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/counter/update/{id}": {
+            "post": {
+                "tags": [
+                    "Counter"
+                ],
+                "summary": "Update Counter",
+                "description": "Returns updated counter data",
+                "operationId": "cd0427dcdc01dadedf374c4b5a4e32ab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Counter id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "counter": {
+                                        "description": "counter",
+                                        "type": "string",
+                                        "example": "22341"
+                                    },
+                                    "title": {
+                                        "description": "Counter Title",
+                                        "type": "string",
+                                        "example": "title text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation/create": {
+            "post": {
+                "tags": [
+                    "Donation"
+                ],
+                "summary": "Create Donation",
+                "description": "Returns created donation data",
+                "operationId": "2679112969d5a12225edb26a4bfcc711",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Donor's Name",
+                                        "type": "string",
+                                        "example": "saha"
+                                    },
+                                    "phone": {
+                                        "description": "Donor's Phone",
+                                        "type": "string",
+                                        "example": "7892156160"
+                                    },
+                                    "email": {
+                                        "description": "Donor's Email",
+                                        "type": "string",
+                                        "example": "subham.5ine@gmail.com"
+                                    },
+                                    "amount": {
+                                        "description": "Donation Amount",
+                                        "type": "string",
+                                        "example": "100"
+                                    },
+                                    "message": {
+                                        "description": "Donation Message",
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "donation_page_id": {
+                                        "description": "Donation Page id",
+                                        "type": "string",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/donation/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Donation"
+                ],
+                "summary": "Delete Donation",
+                "description": "Returns donation data",
+                "operationId": "96f00b01911fc15c1e71e5d799fae65f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Donation id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation/display/{id}": {
+            "get": {
+                "tags": [
+                    "Donation"
+                ],
+                "summary": "Display Donation",
+                "description": "Returns donation data",
+                "operationId": "1f0118433720ce897608ba6c9a27e2c9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Donation id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation/paginate": {
+            "get": {
+                "tags": [
+                    "Donation"
+                ],
+                "summary": "Paginate Donation",
+                "description": "Returns donation collection data",
+                "operationId": "70df6b417da612c0af8174017c001ace",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation/random": {
+            "get": {
+                "tags": [
+                    "Donation"
+                ],
+                "summary": "Display Random Donation",
+                "description": "Returns donation data",
+                "operationId": "ea41a540daf31114d8193bc104c8a43a",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/donation/verify": {
+            "post": {
+                "tags": [
+                    "Donation"
+                ],
+                "summary": "Verify Donation",
+                "description": "Returns created donation data",
+                "operationId": "20e092a22f9de5453ae0bba0057af981",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "razorpay_order_id": {
+                                        "description": "Razorpay Order Id",
+                                        "type": "string",
+                                        "example": "xxxxxx"
+                                    },
+                                    "razorpay_payment_id": {
+                                        "description": "Razorpay Payment Id",
+                                        "type": "string",
+                                        "example": "xxxxxxxx"
+                                    },
+                                    "razorpay_signature": {
+                                        "description": "Razorpay Signature",
+                                        "type": "string",
+                                        "example": "xxxxxxx"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/donation-page/create": {
+            "post": {
+                "tags": [
+                    "Donation Page"
+                ],
+                "summary": "Create Donation Page",
+                "description": "Returns created donation page data",
+                "operationId": "3e8b14508940352df63919153d4364c6",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "Image",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "image_alt": {
+                                        "description": "Image Alt",
+                                        "type": "string",
+                                        "example": "image alt text"
+                                    },
+                                    "image_title": {
+                                        "description": "Image Title",
+                                        "type": "string",
+                                        "example": "image title text"
+                                    },
+                                    "title": {
+                                        "description": "Title",
+                                        "type": "string",
+                                        "example": "title text"
+                                    },
+                                    "slug": {
+                                        "description": "Slug",
+                                        "type": "string",
+                                        "example": "slug"
+                                    },
+                                    "funds_required": {
+                                        "description": "Funds required",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "fund_required_within": {
+                                        "description": "Funds required within",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "campaigner_name": {
+                                        "description": "Campaigner Name",
+                                        "type": "string",
+                                        "example": "Dilip"
+                                    },
+                                    "campaigner_funds_collected": {
+                                        "description": "Campaigner funds collected till now",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "beneficiary_name": {
+                                        "description": "Beneficiary Name",
+                                        "type": "string",
+                                        "example": "Ashish"
+                                    },
+                                    "beneficiary_relationship_with_campaigner": {
+                                        "description": "Relationship of beneficiary with campaigner",
+                                        "type": "string",
+                                        "example": "Sibling Of"
+                                    },
+                                    "beneficiary_funds_collected": {
+                                        "description": "Funds collected till now",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "donation_detail": {
+                                        "description": "Detail of donation page",
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "terms_condition": {
+                                        "description": "Terms & Condition",
+                                        "type": "string",
+                                        "example": "test"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation-page/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Donation Page"
+                ],
+                "summary": "Delete Donation Page",
+                "description": "Returns donation page data",
+                "operationId": "53fcceffb197734f8b34059aa5e9423c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Donation Page id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation-page/display/{id}": {
+            "get": {
+                "tags": [
+                    "Donation Page"
+                ],
+                "summary": "Display Donation Page",
+                "description": "Returns donation Page data",
+                "operationId": "0f9a86b5ee9087caba64adfb0a7483e3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Donation Page id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation-page/paginate": {
+            "get": {
+                "tags": [
+                    "Donation Page"
+                ],
+                "summary": "Paginate Donation Page",
+                "description": "Returns donation page collection data",
+                "operationId": "32f34efa92bc352dce31f1368f3ff108",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/donation-page/random": {
+            "get": {
+                "tags": [
+                    "Donation Page"
+                ],
+                "summary": "Display Random Donation Page",
+                "description": "Returns donation page data",
+                "operationId": "5d967c75affec4b42bfff1334daaa334",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/donation-page/slug/{slug}": {
+            "get": {
+                "tags": [
+                    "Donation Page"
+                ],
+                "summary": "Display Donation Page using slug",
+                "description": "Returns donation Page data",
+                "operationId": "7836e45bc74f74d116aaae13aa286fc6",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "Donation Page slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/donation-page/update/{id}": {
+            "post": {
+                "tags": [
+                    "Donation Page"
+                ],
+                "summary": "Update Donation Page",
+                "description": "Returns updated donation page data",
+                "operationId": "53e784cc68f29605a62f92981c5f2f87",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Donation Page id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "Image",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "image_alt": {
+                                        "description": "Image Alt",
+                                        "type": "string",
+                                        "example": "image alt text"
+                                    },
+                                    "image_title": {
+                                        "description": "Image Title",
+                                        "type": "string",
+                                        "example": "image title text"
+                                    },
+                                    "title": {
+                                        "description": "Title",
+                                        "type": "string",
+                                        "example": "title text"
+                                    },
+                                    "slug": {
+                                        "description": "Slug",
+                                        "type": "string",
+                                        "example": "slug"
+                                    },
+                                    "funds_required": {
+                                        "description": "Funds required",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "fund_required_within": {
+                                        "description": "Funds required within",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "campaigner_name": {
+                                        "description": "Campaigner Name",
+                                        "type": "string",
+                                        "example": "Dilip"
+                                    },
+                                    "campaigner_funds_collected": {
+                                        "description": "Campaigner funds collected till now",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "beneficiary_name": {
+                                        "description": "Beneficiary Name",
+                                        "type": "string",
+                                        "example": "Ashish"
+                                    },
+                                    "beneficiary_relationship_with_campaigner": {
+                                        "description": "Relationship of beneficiary with campaigner",
+                                        "type": "string",
+                                        "example": "Sibling Of"
+                                    },
+                                    "beneficiary_funds_collected": {
+                                        "description": "Funds collected till now",
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "donation_detail": {
+                                        "description": "Detail of donation page",
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "terms_condition": {
+                                        "description": "Terms & Condition",
+                                        "type": "string",
+                                        "example": "test"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "API Endpoints of Authentication"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "scheme": "bearer",
+                "in": "header",
+                "bearerAuth": "bearerAuth",
+                "bearerFormat": "JWT"
+            },
+            "security": {
+                "bearerAuth": []
+            }
+        }
+    }
+}
