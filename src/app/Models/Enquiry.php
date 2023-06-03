@@ -21,6 +21,15 @@ class Enquiry extends Model
         'page_url',
         'email',
         'phone',
+        'ip_address',
+        'otp',
+        'is_verified',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'is_verified' => 'boolean',
     ];
 
 }

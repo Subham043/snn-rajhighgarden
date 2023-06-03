@@ -17,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index', 'as' => 'home'])->name('home');
 Route::group(['middleware' => 'throttle:3,1'], function () {
     Route::post('/enquiry', [EnquiryController::class, 'index', 'as' => 'enquiry'])->name('enquiry');
+    Route::post('/otp/resend', [EnquiryController::class, 'resendOtp', 'as' => 'enquiry.resendOtp'])->name('enquiry.resendOtp');
+    Route::post('/otp/{uuid}', [EnquiryController::class, 'verifyOtp', 'as' => 'enquiry.verifyOtp'])->name('enquiry.verifyOtp');
 });

@@ -553,7 +553,7 @@
     </footer>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
@@ -584,6 +584,30 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="staticBackdropContact" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Verify Mobile Number</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="otpForm" method="post">
+                        <div class="mb-3">
+                          <input type="text" class="form-control" id="otp" name="otp" aria-describedby="otpHelp" placeholder="OTP *">
+                          <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>
+                        </div>
+                        <button type="submit" id="submitOtpBtn" class="btn btn-dark">Submit</button>
+                        <button type="button" id="resendOtpBtn" class="btn btn-danger">Resend OTP</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 <!-- Main JS -->
 <script src="https://kit.fontawesome.com/b6a944420c.js" crossorigin="anonymous"></script>
@@ -749,6 +773,13 @@
         });
     }
 
+    let uuid = null;
+    let link = null;
+
+    var myModalOtp = new bootstrap.Modal(document.getElementById('staticBackdropContact'), {
+        keyboard: false
+    })
+
     jQuery.validator.addMethod("namePattern", function(value, element) {
         return /^[a-zA-Z\s]*$/.test(value);
     }, "Your name contains invalid characters");
@@ -806,13 +837,16 @@
                 async: true,
                 dataType: "json",
                 success: function(response) {
-                    successToast("Message Recieved Successfully.")
+                    // successToast("Message Recieved Successfully.")
                     form.reset();
                     submitBtn.innerHTML =  `
                         Submit
                         `
                     submitBtn.disabled = false;
-                    myModal.hide();
+                    uuid = response.data.uuid;
+                    link = response.data.link;
+                    myModal.hide()
+                    myModalOtp.show()
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     if(xhr?.responseJSON?.form_error?.name){
@@ -845,5 +879,110 @@
             return false;
         }
     });
+
+    var validators2 = $("#otpForm").validate({
+        rules: {
+            // compound rule
+            otp: {
+                required: true,
+                digits: true,
+            },
+        },
+        messages: {
+            otp: {
+                required: "Please specify your otp",
+                digits: "Your otp must be in the format of digits only",
+            },
+        },
+        submitHandler: function(form) {
+            // form.submit();
+            var submitOtpBtn = document.getElementById('submitOtpBtn')
+            submitOtpBtn.innerHTML = `
+                <span class="d-flex align-items-center">
+                    <span class="spinner-border flex-shrink-0" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </span>
+                    <span class="flex-grow-1 ms-2">
+                        Loading...
+                    </span>
+                </span>
+                `
+            submitOtpBtn.disabled = true;
+            $.ajax({
+                type: "POST",
+                url: link,
+                data: new FormData(form),
+                processData: false,
+                contentType: false,
+                cache: false,
+                async: true,
+                dataType: "json",
+                success: function(response) {
+                    successToast("Message Recieved Successfully.")
+                    form.reset();
+                    submitOtpBtn.innerHTML =  `
+                        Submit
+                        `
+                    submitOtpBtn.disabled = false;
+                    uuid = null;
+                    link = null;
+                    myModalOtp.hide()
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if(xhr?.responseJSON?.form_error?.otp){
+                        validators2.showErrors({
+                            "otp": xhr?.responseJSON?.form_error?.otp
+                        });
+                    }
+                    if(xhr?.responseJSON?.error){
+                        errorToast(xhr?.responseJSON?.error)
+                    }
+                    if(xhr?.responseJSON?.message){
+                        errorToast(xhr?.responseJSON?.message)
+                    }
+                    submitOtpBtn.innerHTML =  `
+                        Submit
+                        `
+                    submitOtpBtn.disabled = false;
+                }
+            });
+            return false;
+        }
+    });
+
+    document.getElementById('resendOtpBtn').addEventListener('click', function(event){
+        if(uuid){
+            event.target.innerText = 'Sending ...'
+            event.target.disabled = true;
+            var formData = new FormData();
+            formData.append('uuid',uuid)
+            $.ajax({
+                type: "POST",
+                url: "{{route('enquiry.resendOtp')}}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                async: true,
+                dataType: "json",
+                success: function(response) {
+                    successToast("Otp Sent Successfully.")
+                    event.target.innerText = 'Resend OTP'
+                    event.target.disabled = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if(xhr?.responseJSON?.error){
+                        errorToast(xhr?.responseJSON?.error)
+                    }
+                    if(xhr?.responseJSON?.message){
+                        errorToast(xhr?.responseJSON?.message)
+                    }
+                    event.target.innerText = 'Resend OTP'
+                    event.target.disabled = false;
+                }
+            });
+        }
+    })
+
     </script>
 </html>
