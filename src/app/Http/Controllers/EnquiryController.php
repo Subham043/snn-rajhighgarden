@@ -16,8 +16,8 @@ class EnquiryController extends Controller
 
         $rules = array(
             'name' => 'required|string|max:255',
-            'phone' => 'nullable|integer|digits:10',
-            'email' => 'nullable|string|email|max:255',
+            'phone' => 'required|integer|digits:10',
+            'email' => 'required|string|email|max:255',
             'page_url' => 'nullable|string',
         );
 
@@ -26,19 +26,18 @@ class EnquiryController extends Controller
         if($validator->fails()){
             return response()->json(["form_error"=>$validator->errors()], 400);
         }
+        $data = Enquiry::create([
+            ...$request->only(['name', 'phone', 'email', 'page_url']),
+            'otp' => rand(1000,9999),
+            'ip_address' => $request->ip(),
+            'is_verified' => false,
+        ]);
         try {
             //code...
-            $data = Enquiry::create([
-                ...$request->validate(),
-                'otp' => rand(1000,9999),
-                'ip_address' => $request->ip(),
-                'is_verified' => false,
-            ]);
             (new OtpService)->sendOtp($data->phone, $data->otp);
             $uuid = (new DecryptService)->encryptId($data->id);
             return response()->json(["uuid" => $uuid, "link" => route('enquiry.verifyOtp', $uuid)], 201);
         } catch (\Throwable $th) {
-            // throw $th;
             return response()->json(['message'=>'Oops! Something went wrong. Please try again!'], 400);
         }
 
