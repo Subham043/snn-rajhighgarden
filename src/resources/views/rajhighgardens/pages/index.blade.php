@@ -955,7 +955,7 @@
         },
         submitHandler: function(form) {
             // form.submit();
-            var submitBtn = document.getElementById('submitBtn')
+            var submitBtn = document.getElementById('submitBtnModal')
             submitBtn.innerHTML = `
                 <span class="d-flex align-items-center">
                     <span class="spinner-border flex-shrink-0" role="status">
