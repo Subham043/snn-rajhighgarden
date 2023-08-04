@@ -987,8 +987,8 @@
                     // link = response.data.link;
                     // myModal.hide()
                     // myModalOtp.show()
-                    uuid = response.data.uuid;
-                    link = response.data.link;
+                    uuid = response.uuid;
+                    link = response.link;
                     form.classList.add("d-none")
                     document.getElementById('otpFormModal').classList.remove("d-none")
                 },
