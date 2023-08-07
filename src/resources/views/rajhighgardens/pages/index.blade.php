@@ -721,6 +721,7 @@
                         </div>
                     </form>
                     <form id="otpFormModal" class="d-none" method="post">
+                        <button type="button" id="backOtpBtnModal" class="btn btn-link px-0" style="text-decoration: none"><i class="fa-solid fa-arrow-left"></i> Go Back</button>
                         @csrf
                         <div class="mb-3">
                           <input type="text" id="otpModal" name="otp" aria-describedby="otpHelp" placeholder="OTP *">
@@ -967,10 +968,20 @@
                 </span>
                 `
             submitBtn.disabled = true;
+
+            var formData = new FormData();
+            formData.append('name',document.getElementById('nameModal').value)
+            formData.append('email',document.getElementById('emailModal').value)
+            formData.append('phone',document.getElementById('phoneModal').value)
+            formData.append('project_id',4)
+            formData.append('message','enquiry recieved from raj high garden website')
+            formData.append('country_code',countryData1.getSelectedCountryData().dialCode)
+            formData.append('page_url','{{Request::url()}}')
+
             $.ajax({
                 type: "POST",
-                url: "{{route('enquiry')}}",
-                data: new FormData(form),
+                url: "https://www.snnrajcorp.com/api/pop-up-post",
+                data: formData,
                 processData: false,
                 contentType: false,
                 cache: false,
@@ -978,7 +989,7 @@
                 dataType: "json",
                 success: function(response) {
                     // successToast("Message Recieved Successfully.")
-                    form.reset();
+                    // form.reset();
                     submitBtn.innerHTML =  `
                         Submit
                         `
@@ -1052,6 +1063,8 @@
                 </span>
                 `
             submitOtpBtn.disabled = true;
+            var formData = new FormData();
+            formData.append('otp',document.getElementById('otpModal').value)
             $.ajax({
                 type: "POST",
                 url: link,
@@ -1064,6 +1077,7 @@
                 success: function(response) {
                     successToast("Message Recieved Successfully.")
                     form.reset();
+                    document.getElementById('contactFormModal').reset();
                     submitOtpBtn.innerHTML =  `
                         Submit
                         `
@@ -1104,7 +1118,7 @@
             formData.append('uuid',uuid)
             $.ajax({
                 type: "POST",
-                url: "{{route('enquiry.resendOtp')}}",
+                url: "https://www.snnrajcorp.com/api/pop-up/otp/resend",
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -1128,6 +1142,13 @@
                 }
             });
         }
+    })
+
+    document.getElementById('backOtpBtnModal').addEventListener('click', async function(event){
+        uuidModal = null;
+        linkModal = null;
+        document.getElementById('otpFormModal').classList.add("d-none")
+        document.getElementById('contactFormModal').classList.remove("d-none")
     })
 
     </script>
