@@ -119,7 +119,7 @@
 
 </head>
 <body>
-    <header>
+    <header id="navbar">
         <nav>
             <div class="conatiner">
                 <nav class="navbar navbar-expand-lg">
@@ -164,7 +164,13 @@
     </header>
     <section>
         <div class="banner-holder">
-            <img src="{{ asset('assets/rajhighgardens/images/2121.webp')}}" alt="">
+            {{-- <img src="{{ asset('assets/rajhighgardens/images/2121.webp')}}" alt=""> --}}
+            <picture>
+                <source srcset="{{ asset('assets/rajhighgardens/images/banner-image.jpg')}}" media="(max-width: 600px)">
+                <source srcset="{{ asset('assets/rajhighgardens/images/2121.webp')}}" media="(max-width: 1920px)">
+                <source srcset="{{ asset('assets/rajhighgardens/images/2121.webp')}}">
+                <img src="{{ asset('assets/rajhighgardens/images/2121.webp')}}" alt="" title="" fetchpriority="high">
+            </picture>
         </div>
     </section>
     <section class="sec-holder">
@@ -214,9 +220,9 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 content-holder">
-                        <h2 class="main-title">
+                        <h1 class="main-title">
                             Raj <span>High Gardens</span>
-                        </h2>
+                        </h1>
                         <h6>
                             <span>RERA NUMBER:</span> PRM/KA/RERA/1251/308/PR/140622/004983
                         </h6>
@@ -324,7 +330,7 @@
                                 <div id="panel1" class="panel active">
                                     <div class="tab-regular slider">
                                         <div class="slider-img">
-                                            <img src="{{ asset('assets/rajhighgardens/images/plans/master.webp')}}" class="w-100" alt="master plan" title="master plan">
+                                            <img src="{{ asset('assets/rajhighgardens/images/plans/master-plan.jpg')}}" class="w-100" alt="master plan" title="master plan">
                                         </div>
                                     </div>
                                 </div>
@@ -397,7 +403,7 @@
                         Image <span>Gallery</span>
                     </h2>
                 </div>
-                <div id="gallery-container" class="row mt-5 justify-sm-center">
+                <div id="gallery-container" class="row mt-5 justify-sm-center justify-content-center">
                     <div class="gallery-col">
                         <img src="{{ asset('assets/rajhighgardens/images/new-gallery/1.jpg')}}" alt="raj high gardens amenities" title="raj high gardens amenities" style="height:300px; width:100%; object-fit:cover;">
                     </div>
@@ -559,41 +565,56 @@
                     </h2>
                 </div>
                 <div class="creation slider">
-                    <div class="creation-slider-holder">
-                        <img src="{{ asset('assets/rajhighgardens/images/creation/1.jpeg')}}" alt="raj high gardens location" title="raj high gardens location">
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-raj-etternia" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/1.jpeg')}}" alt="SNN Raj Etternia" title="SNN Raj Etternia">
                         <h5>SNN Raj Etternia</h5>
                         <p><i class="fas fa-map-marker-alt"></i> Haralur Road, Adjacent to HSR Layout</p>
-                    </div>
-                    <div class="creation-slider-holder">
-                        <img src="{{ asset('assets/rajhighgardens/images/creation/2.jpeg')}}" alt="raj high gardens brochure" title="raj high gardens brochure">
+                    </a>
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-raj-greenbay" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/2.jpeg')}}" alt="SNN Raj Greenbay" title="SNN Raj Greenbay">
                         <h5>SNN Raj Greenbay</h5>
                         <p><i class="fas fa-map-marker-alt"></i> Electronic City, Phase 2</p>
-                    </div>
-                    <div class="creation-slider-holder">
-                        <img src="{{ asset('assets/rajhighgardens/images/creation/3.jpeg')}}" alt="raj high gardens about" title="raj high gardens about">
+                    </a>
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-raj-spiritua" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/3.jpeg')}}" alt="SNN Raj Spiritua" title="SNN Raj Spiritua">
                         <h5>SNN Raj Spiritua</h5>
                         <p><i class="fas fa-map-marker-alt"></i> JP Nagar</p>
-                    </div>
-                    <div class="creation-slider-holder">
-                        <img src="{{ asset('assets/rajhighgardens/images/creation/4.jpeg')}}" alt="raj high gardens price list" title="raj high gardens price list">
+                    </a>
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-raj-serenity" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/4.jpeg')}}" alt="SNN Raj Serenity" title="SNN Raj Serenity">
                         <h5>SNN Raj Serenity</h5>
                         <p><i class="fas fa-map-marker-alt"></i> Begur</p>
-                    </div>
-                    <div class="creation-slider-holder">
-                        <img src="{{ asset('assets/rajhighgardens/images/creation/5.jpeg')}}" alt="raj high gardens launch date" title="raj high gardens launch date">
+                    </a>
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-raj-lakeview" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/5.jpeg')}}" alt="SNN Raj Lakeview" title="SNN Raj Lakeview">
                         <h5>SNN Raj Lakeview</h5>
                         <p><i class="fas fa-map-marker-alt"></i> Bilekahalli</p>
-                    </div>
-                    <div class="creation-slider-holder">
-                        <img src="{{ asset('assets/rajhighgardens/images/creation/6.jpeg')}}" alt="raj high gardens" title="raj high gardens">
+                    </a>
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-raj-neeladri" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/6.jpeg')}}" alt="SNN Raj Neeladri" title="SNN Raj Neeladri">
                         <h5>SNN Raj Neeladri</h5>
                         <p><i class="fas fa-map-marker-alt"></i> Electronic City, Phase 1</p>
-                    </div>
-                    <div class="creation-slider-holder">
-                        <img src="{{ asset('assets/rajhighgardens/images/creation/7.jpeg')}}" alt="apartment" title="apartment">
+                    </a>
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-raj-grandeur" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/7.jpeg')}}" alt="SNN Raj Grandeur" title="SNN Raj Grandeur">
                         <h5>SNN Raj Grandeur</h5>
                         <p><i class="fas fa-map-marker-alt"></i> Bommanahalli</p>
-                    </div>
+                    </a>
+                    <a href="https://www.snnrajcorp.com/ongoing-projects/raj-bayvista" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/10.jpg')}}" alt="SNN Raj Bay Vista" title="SNN Raj Bay Vista">
+                        <h5>SNN Raj Bay Vista</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> Bilekahalli</p>
+                    </a>
+                    <a href="https://rajviviente.com/" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/9.jpg')}}" alt="SNN Raj Viviente" title="SNN Raj Viviente">
+                        <h5>SNN Raj Viviente</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> Bannerghatta Road</p>
+                    </a>
+                    <a href="https://www.snnrajcorp.com/completed-projects/snn-clermont" target="_blank" class="creation-slider-holder">
+                        <img src="{{ asset('assets/rajhighgardens/images/creation/8.webp')}}" alt="SNN Raj Clermont" title="SNN Raj Clermont">
+                        <h5>SNN Raj Clermont</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> Hebbal</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1150,6 +1171,16 @@
         document.getElementById('otpFormModal').classList.add("d-none")
         document.getElementById('contactFormModal').classList.remove("d-none")
     })
+
+    document.addEventListener("DOMContentLoaded", function() {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 750) {
+                document.getElementById('navbar').classList.add('is-sticky');
+                } else {
+                document.getElementById('navbar').classList.remove('is-sticky');
+            }
+        });
+    });
 
     </script>
 </html>
