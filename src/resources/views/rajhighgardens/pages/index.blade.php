@@ -372,16 +372,16 @@
                                 <div id="panel6" class="panel">
                                     <div class="tab-regular tab-slider slider">
                                         <div class="slider-img">
-                                            <img src="{{ asset('assets/rajhighgardens/images/plans/6.webp')}}" class="w-100" alt="snn flats" title="snn flats">
+                                            <img src="{{ asset('assets/rajhighgardens/images/plans/10.jpg')}}" class="w-100" alt="snn flats" title="snn flats">
                                         </div>
                                         <div class="slider-img">
-                                            <img src="{{ asset('assets/rajhighgardens/images/plans/7.webp')}}" class="w-100" alt="Apartment projects near Hosur road" title="Apartment projects near Hosur road">
+                                            <img src="{{ asset('assets/rajhighgardens/images/plans/11.png')}}" class="w-100" alt="Apartment projects near Hosur road" title="Apartment projects near Hosur road">
                                         </div>
                                         <div class="slider-img">
-                                            <img src="{{ asset('assets/rajhighgardens/images/plans/8.webp')}}" class="w-100" alt="apartments for sale" title="apartments for sale">
+                                            <img src="{{ asset('assets/rajhighgardens/images/plans/12.png')}}" class="w-100" alt="apartments for sale" title="apartments for sale">
                                         </div>
                                         <div class="slider-img">
-                                            <img src="{{ asset('assets/rajhighgardens/images/plans/9.webp')}}" class="w-100" alt="2bhk apartments" title="2bhk apartments">
+                                            <img src="{{ asset('assets/rajhighgardens/images/plans/13.png')}}" class="w-100" alt="2bhk apartments" title="2bhk apartments">
                                         </div>
                                     </div>
                                 </div>
